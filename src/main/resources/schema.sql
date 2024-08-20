@@ -1,0 +1,25 @@
+
+CREATE TABLE app_user(
+    id UUID PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    password VARCHAR NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    created TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT NOW(),
+    updated TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT NOW(),
+    is_active BOOLEAN NOT NULL DEFAULT true,
+    token TEXT,
+    last_login TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT NOW(),
+    CONSTRAINT unique_email UNIQUE (email)
+);
+
+CREATE TABLE phone(
+    id UUID PRIMARY KEY,
+    country_code VARCHAR(10) NOT NULL,
+    city_code VARCHAR(10) NOT NULL,
+    phone_number VARCHAR(20) NOT NULL,
+    created TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT NOW(),
+    updated TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT NOW(),
+    is_active BOOLEAN NOT NULL DEFAULT true,
+    user_id UUID NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES app_user(id)
+);
