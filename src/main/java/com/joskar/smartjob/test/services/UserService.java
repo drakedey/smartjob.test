@@ -34,7 +34,9 @@ public class UserService {
         User persistedUser = userRepository.save(userToCreate);
 
         List<Phone> phones = createUserRequestDTO.getPhones(persistedUser);
-        phoneRepository.saveAllAndFlush(phones);
+        if(!phones.isEmpty()) {
+            phoneRepository.saveAllAndFlush(phones);
+        }
 
         return new CreateUserResponseDTO(persistedUser);
     }
