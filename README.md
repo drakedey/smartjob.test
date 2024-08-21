@@ -12,7 +12,7 @@ modificar en el alcance de la prueba en el application.properties
 ```
 smartjob.test.password-regex
 ```
-Por defecto si no es especicado tendra el siguiente valor
+Por defecto si no es especificado tendra el siguiente valor
 ```
 ^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{6,})\S$
 ```
